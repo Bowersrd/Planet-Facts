@@ -1,4 +1,5 @@
 <template>
+  <div class="fixed-bg"></div>
   <app-navbar :planets="planets" :activePlanet="activePlanet" @change-planet="changePlanet" @scroll-lock="scrollLock"></app-navbar>
   <main>
     <planet-info :planet="planets[activePlanet]" :currentView="views[currentView]" @change-tab="changeTab"></planet-info>
@@ -47,11 +48,21 @@ export default {
 
 body {
   background-color: var(--color-primary-500);
-  background-image: url('@/assets/images/background-stars.svg');
-  background-position: center right;
-  background-attachment: fixed;
-  // background-size: cover;
+  background-size: cover;
   font-family: var(--ff-primary);
   color: var(--color-white);
+}
+
+.fixed-bg {
+  // To support Safari since Safari does not support bg attachment at this time
+  z-index: -1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-image: url('@/assets/images/background-stars.svg');
+  background-position: top left;
+  background-size: cover;
 }
 </style>

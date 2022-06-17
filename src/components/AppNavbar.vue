@@ -93,23 +93,25 @@
 .nav {
     position: absolute;
     top: 3.8125rem;
-    right: 100%;
+    right: 0;
+    transform: translateX(-100%);
     height: 100vh;
     width: 100%;
     background-color: var(--color-primary-500);
     padding-inline: 1.5rem;
     z-index: 999;
-    transition: right .65s ease;
+    transition: transform .4s ease-out;
     @include md {
         position: initial;
         height: initial;
         background-color: transparent;
+        transform: translateX(0);
     }
     @include xl {
         max-width: fit-content;
     }
     &--isMobileOpen {
-        right: 0;
+        transform: translateX(0%);
     }
 }
 
