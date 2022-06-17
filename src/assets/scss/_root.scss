@@ -1,0 +1,46 @@
+@use './mixins';
+
+:root {
+    --color-primary-500: hsl(240 67% 8%);
+    --color-primary-300: hsl(240 17% 26%);
+    --color-primary-100: hsl(240 6% 54%);
+    --color-white: hsl(0 0% 100%);
+    // Planet Colors
+    --color-mercury: hsl(194 48% 49%);
+    --color-venus: hsl(33 82% 61%);
+    --color-earth: hsl(263 67% 51%);
+    --color-mars: hsl(10 63% 51%);
+    --color-jupiter: hsl(2 68% 53%);
+    --color-saturn: hsl(17 73% 46%);
+    --color-uranus: hsl(169 73% 44%);
+    --color-neptune: hsl(222 87% 56%);
+    // Font Family
+    --ff-primary: 'Spartan', sans-serif;
+    --ff-secondary: 'Antonio', sans-serif;
+    // Font Weights
+    --fw-bold: 700;
+    --fw-medium: 500;
+    --fw-regular: 400; 
+    --fw-light: 300;
+    // Font Size (Mobile first)
+    --fs-100: .5rem; // 8px
+    --fs-200: .5625rem; // 9px
+    --fs-300: .6875rem; // 11px
+    --fs-400: .9375rem; // 15px
+    --fs-500: 1.25rem; // 20px
+    --fs-600: 1.75rem; // 28px
+    --fs-700: 2.5rem; // 40px
+    // Media Query
+    @include md {
+        --fs-500: 1.5rem; // 24px
+        --fs-700: 3rem; // 48px
+    }    
+    @include xl {
+        --fs-100: .5625rem; // 8px
+        --fs-200: .6875rem; // 11px
+        --fs-300: .75rem; // 12px
+        --fs-400: .875rem; // 14px
+        --fs-500: 2.5rem; // 40px
+        --fs-700: 5rem; // 80px
+    }
+}

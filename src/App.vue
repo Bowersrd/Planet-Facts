@@ -1,26 +1,57 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <app-navbar :planets="planets" :activePlanet="activePlanet" @change-planet="changePlanet" @scroll-lock="scrollLock"></app-navbar>
+  <main>
+    <planet-info :planet="planets[activePlanet]" :currentView="views[currentView]" @change-tab="changeTab"></planet-info>
+    <planet-stats :planet="planets[activePlanet]"></planet-stats>
+  </main>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import AppNavbar from '@/components/AppNavbar';
+import PlanetInfo from '@/components/PlanetInfo';
+import PlanetStats from '@/components/PlanetStats';
+import PlanetData from '../static/data.json';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    'app-navbar': AppNavbar,
+    'planet-info': PlanetInfo,
+    'planet-stats': PlanetStats    
+  },
+  data() {
+    return {
+      planets: PlanetData,
+      activePlanet: 0,
+      currentView: 0,
+      views: ['overview', 'structure', 'geology']
+    }
+  },
+  methods: {
+    changePlanet(index) {
+      this.activePlanet = index;
+      document.body.style.overflow = 'auto';
+    },
+    changeTab(index) {
+      this.currentView = index;
+    },
+    scrollLock() {
+      document.body.style.overflow == 'hidden' ? document.body.style.overflow = 'auto' : document.body.style.overflow = 'hidden';
+    }
   }
 }
 </script>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+@import '@/assets/scss/style.scss';
+
+body {
+  background-color: var(--color-primary-500);
+  background-image: url('@/assets/images/background-stars.svg');
+  background-position: center right;
+  background-attachment: fixed;
+  // background-size: cover;
+  font-family: var(--ff-primary);
+  color: var(--color-white);
 }
 </style>
